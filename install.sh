@@ -70,8 +70,8 @@ cd /usr/share/BlueToolkit/modules
 git clone https://github.com/sgxgsx/BluetoothAssistant /usr/share/BlueToolkit/modules/BluetoothAssistant
 
 cd BluetoothAssistant
-chmod +x /usr/share/BlueToolkit/modules/install.sh
-/usr/share/BlueToolkit/modules/BluetoothAssitant/install.sh
+chmod +x /usr/share/BlueToolkit/modules/BluetoothAssistant/install.sh
+/usr/share/BlueToolkit/modules/BluetoothAssistant/install.sh
 cd ..
 
 #### Bdaddr
