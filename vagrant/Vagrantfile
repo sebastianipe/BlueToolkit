@@ -22,6 +22,23 @@ Vagrant.configure("2") do |config|
     vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "Future Technology Devices International, Ltd FT2232C/D/H Dual UART/FIFO IC", "--vendorid", "0x0403", "--productid", "0x6010"]
   end
 
+  # Configuration for libvirt
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.memory = 2048
+    libvirt.cpus = 2
+    libvirt.graphics_type = "spice"
+    libvirt.video_type = "qxl"
+    
+    # Nexus 5
+    libvirt.usb :vendor => '0x18d1', :product => '0x4ee2', :startupPolicy => 'optional'
+
+    # Bluetooth Dongle
+    libvirt.usb :vendor => '0x8087', :product => '0x0026', :startupPolicy => 'optional'
+
+    # FTDI Dual UART
+    libvirt.usb :vendor => '0x0403', :product => '0x6010', :startupPolicy => 'optional'
+  end
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -77,35 +94,3 @@ Vagrant.configure("2") do |config|
   # SHELL
   config.vm.provision :shell, path: "./vagrant_install.sh", privileged: true
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
